@@ -67,6 +67,15 @@ class _RegistroScreenState extends State<RegistroScreen> {
     _edadController.text = age.toString();
   }
 
+  void _showSuccessMessage() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('¡Datos enviados exitosamente!'),
+        backgroundColor: Colors.green,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,7 +101,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
                 child: Column(
                   children: [
                     const Text(
-                      'Regístro - Ismael Vargas',
+                      'Registro - Ismael Vargas',
                       style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
@@ -238,8 +247,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
                       items: const [
                         DropdownMenuItem(value: 'Soltero', child: Text('Soltero')),
                         DropdownMenuItem(value: 'Casado', child: Text('Casado')),
-                        DropdownMenuItem(
-                            value: 'Divorciado', child: Text('Divorciado')),
+                        DropdownMenuItem(value: 'Divorciado', child: Text('Divorciado')),
                       ],
                       onChanged: (value) {
                         setState(() {
@@ -281,7 +289,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
                         ),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            // Proceed with registration logic
+                            _showSuccessMessage();
                           }
                         },
                         icon: const Icon(Icons.arrow_forward, color: Colors.white),
